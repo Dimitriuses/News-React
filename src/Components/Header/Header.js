@@ -2,8 +2,9 @@ import React, {Fragment} from "react";
 import {Link, BrowserRouter as Router} from "react-router-dom";
 
 import "./Header.css";
+import Search from "../Search/Search"
 
-const Header = () => {
+const Header = (onSearch) => {
   return (
     <Fragment>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,7 +23,7 @@ const Header = () => {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
+              <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                 <Link className="nav-link" to="/">
                   Home
@@ -54,15 +55,9 @@ const Header = () => {
                   </a>
                 </li>
               </ul>
+              <Search onSearch={onSearch}/>
             </div>
           </nav>
-
-          <div className="row">
-            <h2 className="text-center">
-              <span>Contact list</span>Created with{" "}
-              <i className="fa fa-heart"></i> for me
-            </h2>
-          </div>
         </Fragment>
   );
 };
