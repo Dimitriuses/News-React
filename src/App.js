@@ -10,7 +10,7 @@ import NewsList from "./Components/NewsList/NewsList"
 
 class App extends Component{
   state = {
-    list:[
+    List:[
       {
         id:1,
         title:"Jacques Chirac, former French president, is dead at 86 - CNN",
@@ -141,7 +141,7 @@ class App extends Component{
         <Header/>
         <Switch>
           <Route path="/" exact render={()=>(
-            <NewsList list={showNews}/>
+            <NewsList List={showNews}/>
           )}
           />
         </Switch>

@@ -1,4 +1,5 @@
 import React from "react";
+import "./NewsItem.css"
 
 class NewsItem extends React.Component{
 
@@ -37,13 +38,13 @@ class NewsItem extends React.Component{
     render() {
         const {id ,title, description, image, url} = this.props;
         
-        let btnStyle = "";
+        let CardStyle = "";
         let btnStar = "";
-        if(this.state.btnChange){
-            btnStyle = "btn btn-danger"
+        if(title.length<=60){
+            CardStyle = "grid-item"
         }
         else{
-            btnStyle = "btn btn-default"
+            CardStyle = "grid-item  grid-item--width2"
         }
         if(this.state.favorite){
             btnStar = "fa fa-star-o fa-2x star";
@@ -55,9 +56,9 @@ class NewsItem extends React.Component{
         
         console.log(this.props);
         return (
-            <div>
+            <div class={CardStyle}>
                 <div class="card">
-                    <img class="card-img-top" src={image}/>
+                    <img class="card-img-top" src={image} alt="Card image cap"/>
                     <div class="card-body">
                         <h4>{title}</h4>
                         <p>{description}</p>

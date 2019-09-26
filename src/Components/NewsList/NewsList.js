@@ -20,9 +20,18 @@ const NewsList = ({
   });
   return (
     <Fragment>
-      <div className="grid">
-        <div id="sortable">{newItem}</div>
+      <div >
+        <div className="grid" id="sortable" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>{newItem}</div>
       </div>
+      <script>
+       var grid = $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: 200
+        });
+        grid.imagesLoaded().progress( function() {
+          grid.masonry('layout');
+        });
+      </script>
     </Fragment>
   );
 };
