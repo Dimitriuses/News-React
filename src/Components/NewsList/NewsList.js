@@ -8,11 +8,11 @@ const NewsList = ({
   const newItem = List.map((item) => {
     return (
       <NewsItem
-        key={item.id}
-        id={item.id}
+        key={item.publishedAt}
+        id={item.publishedAt}
         title={item.title}
         description={item.description}
-        image={item.image}
+        image={item.urlToImage}
         url={item.url}
         favorite={item.favorite}
       />
@@ -23,7 +23,7 @@ const NewsList = ({
       <div >
         <div className="grid" id="sortable" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>{newItem}</div>
       </div>
-      <script>
+      {/*<script>
        var grid = $('.grid').masonry({
         itemSelector: '.grid-item',
         columnWidth: 200
@@ -31,7 +31,7 @@ const NewsList = ({
         grid.imagesLoaded().progress( function() {
           grid.masonry('layout');
         });
-      </script>
+      </script>*/}
     </Fragment>
   );
 };

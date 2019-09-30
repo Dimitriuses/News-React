@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from "./Components/Header/Header"
 import NewsList from "./Components/NewsList/NewsList"
+import API from "./APIClient"
 
 class App extends Component{
   state = {
@@ -109,6 +110,7 @@ class App extends Component{
     }
     ],
     findNews:"",
+    list:[]
   }
 
 
@@ -131,9 +133,42 @@ class App extends Component{
     });
   };
 
+  updateNews (country = "ua"){
+    const news = new API();
+    const newsList = news.getAllNews("us")
+    .then(({articles}) =>{
+      const newsList = articles;
+      console.log(newsList);
+      this.setState({
+        list:articles
+      });
+    })
+    .catch(err => console.log(err.message));
+  }
+
+  remapList = (list)=>{
+    for(var i = 0; i< list.length; i++){
+      console.log(list[i],i,list[i].id);
+      list[i].id=i;
+      list[i].favorite=false;
+      console.log(list[i],i,list[i].id);
+    }
+
+    //console.log(list);
+    return list;
+  }
+  componentDidMount(){
+    this.updateNews();
+    /*this.setState({
+      list:this.remapList(this.state.list)
+    })*/
+    console.log(this.state.list)
+  }
+
   render() {
+
     const showNews = this.onShowNews(
-      this.state.List,
+      this.state.list,
       this.state.findNews
     );
     return (
@@ -166,3 +201,5 @@ class App extends Component{
   }
 }
 export default App;
+
+
