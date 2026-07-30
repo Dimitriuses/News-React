@@ -1,3 +1,20 @@
+/*
+ * width: 18rem / 36rem in 2019, picked by a `title.length <= 60` test in NewsItem. Two
+ * things were wrong with it: the widths were fixed pixels, so a 576px card overflowed a
+ * 390px phone by 186px; and newsapi.org appends " - Publisher" to every headline, so only
+ * 2 of 19 live titles ever came in under 60 characters and almost every card took the
+ * wide branch. The column layout in NewsList.css decides the width now.
+ */
+.grid-item {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 1rem;
+}
 
-.grid-item { width: 18rem; }
-.grid-item--width2 { width: 36rem; }
+.grid-item .card-img-top {
+  width: 100%;
+  height: auto;
+}

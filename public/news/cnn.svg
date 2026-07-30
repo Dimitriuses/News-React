@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="CNN">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(283, 42%, 26%)"/>
+      <stop offset="1" stop-color="hsl(311, 46%, 17%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#g)"/>
+  <rect x="48" y="60" width="300" height="18" rx="9" fill="hsl(283, 34%, 76%)" opacity="0.85"/>
+  <rect x="48" y="92" width="196" height="18" rx="9" fill="hsl(283, 34%, 76%)" opacity="0.65"/>
+<rect x="48" y="150" width="120" height="9" rx="4.5" fill="hsl(283, 34%, 76%)" opacity="0.5"/>
+<rect x="48" y="176" width="173" height="9" rx="4.5" fill="hsl(283, 34%, 76%)" opacity="0.43"/>
+<rect x="48" y="202" width="226" height="9" rx="4.5" fill="hsl(283, 34%, 76%)" opacity="0.36"/>
+<rect x="48" y="228" width="129" height="9" rx="4.5" fill="hsl(283, 34%, 76%)" opacity="0.29"/>
+<rect x="48" y="254" width="182" height="9" rx="4.5" fill="hsl(283, 34%, 76%)" opacity="0.21999999999999997"/>
+  <circle cx="512" cy="248" r="64" fill="hsl(283, 34%, 76%)" opacity="0.13"/>
+  <text x="48" y="316" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26"
+        font-weight="600" fill="hsl(283, 34%, 76%)" opacity="0.95">CNN</text>
+</svg>

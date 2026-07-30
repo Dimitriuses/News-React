@@ -1,64 +1,49 @@
-import React, {Fragment} from "react";
-import {Link, BrowserRouter as Router} from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./Header.css";
-import Search from "../Search/Search"
+import Search from "../Search/Search";
 
-const Header = (onSearch) => {
+/**
+ * The 2019 version was declared `const Header = (onSearch) => ...`, so the parameter was
+ * really the whole props object, and App rendered `<Header/>` with no props at all. The
+ * search box therefore received `onSearch={{}}` and threw on every click.
+ *
+ * The About / Add New / Pricing / Disabled nav items are gone: the first two routed to
+ * pages that were never written and rendered a blank body, the other two were href="#".
+ */
+const Header = ({ onSearch }) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Fragment>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to="/">
-              APP name
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">
+        News
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        onClick={() => setOpen(!open)}
+        aria-controls="navbarNav"
+        aria-expanded={open}
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
+      <div
+        className={`collapse navbar-collapse${open ? " show" : ""}`}
+        id="navbarNav"
+      >
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <Link className="nav-link" to="/">
+              Home
             </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Home
-                </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/about">
-                    About
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/add">
-                    Add New
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Pricing
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link disabled"
-                    href="#"
-                    tabindex="-1"
-                    aria-disabled="true"
-                  >
-                    Disabled
-                  </a>
-                </li>
-              </ul>
-              <Search onSearch={onSearch}/>
-            </div>
-          </nav>
-        </Fragment>
+          </li>
+        </ul>
+        <Search onSearch={onSearch} />
+      </div>
+    </nav>
   );
 };
 

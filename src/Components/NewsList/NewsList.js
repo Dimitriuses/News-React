@@ -1,38 +1,29 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import NewsItem from "../NewsItem/NewsItem";
+import "./NewsList.css";
 
-const NewsList = ({
-  List
-}) => {
-  const newItem = List.map((item) => {
-    return (
-      <NewsItem
-        key={item.publishedAt}
-        id={item.publishedAt}
-        title={item.title}
-        description={item.description}
-        image={item.urlToImage}
-        url={item.url}
-        favorite={item.favorite}
-      />
-    );
-  });
+/**
+ * Keyed on `url` rather than the 2019 `publishedAt`: the snapshot articles have no
+ * publishedAt, and a URL is unique per article in both the snapshot and the live API.
+ */
+const NewsList = ({ List }) => {
+  if (List.length === 0) {
+    return <p className="grid-empty">No headlines match that search.</p>;
+  }
+
   return (
-    <Fragment>
-      <div >
-        <div className="grid" id="sortable" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>{newItem}</div>
-      </div>
-      {/*<script>
-       var grid = $('.grid').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: 200
-        });
-        grid.imagesLoaded().progress( function() {
-          grid.masonry('layout');
-        });
-      </script>*/}
-    </Fragment>
+    <div className="grid">
+      {List.map(item => (
+        <NewsItem
+          key={item.url}
+          title={item.title}
+          description={item.description}
+          image={item.urlToImage}
+          url={item.url}
+        />
+      ))}
+    </div>
   );
 };
 

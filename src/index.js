@@ -1,5 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// Bootstrap 4 was loaded from maxcdn in 2019, alongside six other CDN scripts that between
+// them did nothing. It is a dependency now, so the app makes no third-party requests.
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

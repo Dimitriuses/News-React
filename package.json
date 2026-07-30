@@ -2,8 +2,9 @@
   "name": "news",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dimitriuses.github.io/News-React",
   "dependencies": {
-    "masonry-layout": "^4.2.2",
+    "bootstrap": "^4.6.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.1.0",
